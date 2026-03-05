@@ -1,0 +1,40 @@
+﻿using AutoMapper;
+using ECommerce.API.Context;
+using ECommerce.API.DTOs;
+using ECommerce.API.Models;
+using ECommerce.API.Services;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+namespace ECommerce.API.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class UserController : ControllerBase
+    {
+        private IPasswordService _passwordService;
+        private AppDbContext _appDbContext;
+        private IMapper _mapper;
+        public UserController(IPasswordService passwordService, AppDbContext appDbContext, IMapper mapper)
+        {
+            _passwordService = passwordService;
+            _appDbContext = appDbContext;
+            _mapper = mapper;
+        }
+
+        [HttpPost]
+        public ActionResult Teste([FromBody] UserRequestDTO userRequestDTO) {
+            if (userRequestDTO is null)
+            {
+                return BadRequest();
+            }
+
+            var user = _mapper.Map<User>(userRequestDTO);
+
+            _appDbContext.Add(user);
+            _appDbContext.SaveChanges();
+
+            return Ok(user);
+        }
+    }
+}

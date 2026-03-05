@@ -1,0 +1,18 @@
+[
+  {
+    "ContainingType": "ECommerce.API.Controllers.UserController",
+    "Method": "Teste",
+    "RelativePath": "api/User",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userRequestDTO",
+        "Type": "ECommerce.API.DTOs.UserRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

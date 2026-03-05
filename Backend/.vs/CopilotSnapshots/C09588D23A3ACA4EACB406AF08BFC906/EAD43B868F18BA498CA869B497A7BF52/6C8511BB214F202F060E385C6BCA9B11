@@ -1,0 +1,14 @@
+﻿using AutoMapper;
+using ECommerce.API.Models;
+using System.Runtime.InteropServices;
+
+namespace ECommerce.API.DTOs.Mapping
+{
+    public class UserDTOMappingProfile : Profile
+    {
+        public UserDTOMappingProfile()
+        {
+            CreateMap<User, UserRequestDTO>().ReverseMap();
+        }
+    }
+}

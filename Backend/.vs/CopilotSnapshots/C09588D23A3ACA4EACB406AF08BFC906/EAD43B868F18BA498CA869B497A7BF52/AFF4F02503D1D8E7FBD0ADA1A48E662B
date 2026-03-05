@@ -1,0 +1,16 @@
+﻿using AutoMapper;
+using ECommerce.API.Models;
+
+namespace ECommerce.API.DTOs.Mapping
+{
+    public class UserDTOMappingProfile : Profile
+    {
+        public UserDTOMappingProfile()
+        {
+            CreateMap<UserRequestDTO, User>()
+                .ForMember(dest => dest.HashedPassword, opt => opt.MapFrom(src => src.Password))
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.CreatedAt, opt => opt.Ignore());
+        }
+    }
+}

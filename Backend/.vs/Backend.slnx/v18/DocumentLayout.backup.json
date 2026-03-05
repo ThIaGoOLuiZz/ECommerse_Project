@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\thiag\\Desktop\\ECommerce\\Backend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{62B341BD-721C-4272-A46A-B7F55E88F914}|ECommerce.API\\ECommerce.API.csproj|c:\\users\\thiag\\desktop\\ecommerce\\backend\\ecommerce.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62B341BD-721C-4272-A46A-B7F55E88F914}|ECommerce.API\\ECommerce.API.csproj|solutionrelative:ecommerce.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62B341BD-721C-4272-A46A-B7F55E88F914}|ECommerce.API\\ECommerce.API.csproj|c:\\users\\thiag\\desktop\\ecommerce\\backend\\ecommerce.api\\dtos\\mapping\\userdtomappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62B341BD-721C-4272-A46A-B7F55E88F914}|ECommerce.API\\ECommerce.API.csproj|solutionrelative:ecommerce.api\\dtos\\mapping\\userdtomappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62B341BD-721C-4272-A46A-B7F55E88F914}|ECommerce.API\\ECommerce.API.csproj|c:\\users\\thiag\\desktop\\ecommerce\\backend\\ecommerce.api\\dtos\\mapping\\iuserdtomappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62B341BD-721C-4272-A46A-B7F55E88F914}|ECommerce.API\\ECommerce.API.csproj|solutionrelative:ecommerce.api\\dtos\\mapping\\iuserdtomappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62B341BD-721C-4272-A46A-B7F55E88F914}|ECommerce.API\\ECommerce.API.csproj|c:\\users\\thiag\\desktop\\ecommerce\\backend\\ecommerce.api\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62B341BD-721C-4272-A46A-B7F55E88F914}|ECommerce.API\\ECommerce.API.csproj|solutionrelative:ecommerce.api\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62B341BD-721C-4272-A46A-B7F55E88F914}|ECommerce.API\\ECommerce.API.csproj|c:\\users\\thiag\\desktop\\ecommerce\\backend\\ecommerce.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62B341BD-721C-4272-A46A-B7F55E88F914}|ECommerce.API\\ECommerce.API.csproj|solutionrelative:ecommerce.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IUserDTOMappingProfile.cs",
+              "DocumentMoniker": "C:\\Users\\thiag\\Desktop\\ECommerce\\Backend\\ECommerce.API\\DTOs\\Mapping\\IUserDTOMappingProfile.cs",
+              "RelativeDocumentMoniker": "ECommerce.API\\DTOs\\Mapping\\IUserDTOMappingProfile.cs",
+              "ToolTip": "C:\\Users\\thiag\\Desktop\\ECommerce\\Backend\\ECommerce.API\\DTOs\\Mapping\\IUserDTOMappingProfile.cs",
+              "RelativeToolTip": "ECommerce.API\\DTOs\\Mapping\\IUserDTOMappingProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T02:31:44.47Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\thiag\\Desktop\\ECommerce\\Backend\\ECommerce.API\\Models\\User.cs",
+              "RelativeDocumentMoniker": "ECommerce.API\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\thiag\\Desktop\\ECommerce\\Backend\\ECommerce.API\\Models\\User.cs",
+              "RelativeToolTip": "ECommerce.API\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T02:26:51.047Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserDTOMappingProfile.cs",
+              "DocumentMoniker": "C:\\Users\\thiag\\Desktop\\ECommerce\\Backend\\ECommerce.API\\DTOs\\Mapping\\UserDTOMappingProfile.cs",
+              "RelativeDocumentMoniker": "ECommerce.API\\DTOs\\Mapping\\UserDTOMappingProfile.cs",
+              "ToolTip": "C:\\Users\\thiag\\Desktop\\ECommerce\\Backend\\ECommerce.API\\DTOs\\Mapping\\UserDTOMappingProfile.cs",
+              "RelativeToolTip": "ECommerce.API\\DTOs\\Mapping\\UserDTOMappingProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T02:20:19.093Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\thiag\\Desktop\\ECommerce\\Backend\\ECommerce.API\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "ECommerce.API\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\thiag\\Desktop\\ECommerce\\Backend\\ECommerce.API\\Controllers\\UserController.cs",
+              "RelativeToolTip": "ECommerce.API\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwBsAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T02:17:49.819Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\thiag\\Desktop\\ECommerce\\Backend\\ECommerce.API\\Program.cs",
+              "RelativeDocumentMoniker": "ECommerce.API\\Program.cs",
+              "ToolTip": "C:\\Users\\thiag\\Desktop\\ECommerce\\Backend\\ECommerce.API\\Program.cs",
+              "RelativeToolTip": "ECommerce.API\\Program.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T02:11:38.197Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
