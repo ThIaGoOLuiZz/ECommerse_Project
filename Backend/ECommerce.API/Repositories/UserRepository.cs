@@ -39,9 +39,9 @@ namespace ECommerce.API.Repository
             await _appDbContext.SaveChangesAsync();
         }
 
-        public Task<bool> isMailExist(int id)
+        public async Task<bool> EmailExist(string email)
         {
-            throw new NotImplementedException();
+            return await _appDbContext.Users.FirstOrDefaultAsync(x => x.Email == email) is null  ? false : true;
         }
     } 
 }

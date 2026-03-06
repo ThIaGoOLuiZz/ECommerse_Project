@@ -8,6 +8,6 @@ namespace ECommerce.API.Repository
         public Task<User> GetUserById(int id);
         public Task<User> CreateUserAsync(User user);
         public Task DeleteUserAsync(int id);
-        public Task<bool> isMailExist(int id);
+        public Task<bool> EmailExist(string email);
     }
 }

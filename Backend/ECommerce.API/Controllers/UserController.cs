@@ -55,6 +55,8 @@ namespace ECommerce.API.Controllers
         public async Task<ActionResult> CreateUser([FromBody] UserRequestDTO userRequestDTO) 
         {
             
+            if(await _userRepository.EmailExist(userRequestDTO.Email!))
+                return Conflict(new { StatusCode = 409, Error = "Email already exists!" });
             var user = _mapping.UserRequestDTOToUser(userRequestDTO);
             var userCreated = _mapping.UserToUserResponse(await _userRepository.CreateUserAsync(user));
 
