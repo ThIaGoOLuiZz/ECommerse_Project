@@ -18,7 +18,7 @@ namespace ECommerce.API.Repository
             return users;
         }
 
-        public async Task<User> GetUserById(int id)
+        public async Task<User> GetUserById(int id) 
         {
             var user = await _appDbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
             return user;
@@ -37,6 +37,11 @@ namespace ECommerce.API.Repository
             var user = _appDbContext.Users.First(x => x.Id == id);
             _appDbContext.Users.Remove(user);
             await _appDbContext.SaveChangesAsync();
+        }
+
+        public Task<bool> isMailExist(int id)
+        {
+            throw new NotImplementedException();
         }
     } 
 }

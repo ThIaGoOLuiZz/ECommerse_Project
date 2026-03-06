@@ -12,7 +12,7 @@ namespace ECommerce.API.Models
         [Required]
         [StringLength(100)]
         [EmailAddress(ErrorMessage = "Email inválido!")]
-        public string? Mail { get; set; }
+        public string? Email { get; set; }
         [Required]
         [StringLength(30)]
         [RegularExpression("^[1-9]{2}9[1-9][0-9]{7}$", ErrorMessage = "Telefone inválido!")]

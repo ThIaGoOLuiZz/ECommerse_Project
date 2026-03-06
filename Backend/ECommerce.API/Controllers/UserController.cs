@@ -14,8 +14,6 @@ namespace ECommerce.API.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private IPasswordService _passwordService;
-        private AppDbContext _appDbContext;
         private IUserDTOMappingProfile _mapping;
         private IUserRepository _userRepository;
 
@@ -27,8 +25,6 @@ namespace ECommerce.API.Controllers
             IUserRepository userRepository
         )
         {
-            _passwordService = passwordService;
-            _appDbContext = appDbContext;
             _mapping = mapping;
             _userRepository = userRepository;
         }
@@ -56,12 +52,13 @@ namespace ECommerce.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> PostUser([FromBody] UserRequestDTO userRequestDTO) {
+        public async Task<ActionResult> CreateUser([FromBody] UserRequestDTO userRequestDTO) 
+        {
+            
             var user = _mapping.UserRequestDTOToUser(userRequestDTO);
-            user.HashedPassword = _passwordService.HashGeneration(userRequestDTO.Password!);
             var userCreated = _mapping.UserToUserResponse(await _userRepository.CreateUserAsync(user));
 
-            return Ok(new { StatusCode = 200, Id = userCreated.Id });
+            return Created(string.Empty, new { StatusCode = 201, Id = userCreated.Id });
         }
 
         [HttpDelete("{id}")]
