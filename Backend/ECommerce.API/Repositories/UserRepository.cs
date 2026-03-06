@@ -24,6 +24,12 @@ namespace ECommerce.API.Repository
             return user;
         }
 
+        public async Task<User> GetUserByEmail(string email)
+        {
+            var user = await _appDbContext.Users.FirstOrDefaultAsync(x => x.Email == email);
+            return user;
+        }
+
         public async Task<User> CreateUserAsync(User user)
         {
             await _appDbContext.AddAsync(user);

@@ -6,6 +6,7 @@ namespace ECommerce.API.Repository
     {
         public Task<IEnumerable<User>> GetAllUsers();
         public Task<User> GetUserById(int id);
+        public Task<User> GetUserByEmail(string email);
         public Task<User> CreateUserAsync(User user);
         public Task DeleteUserAsync(int id);
         public Task<bool> EmailExist(string email);

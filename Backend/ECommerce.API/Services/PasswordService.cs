@@ -12,23 +12,26 @@ namespace ECommerce.API.Services
 
         public string HashGeneration(string password)
         {
-            var configSection = _configuration.GetSection("BCrypt");
-            string secretKey = configSection["secretKey"]!;
-            int workFactor = int.Parse(configSection["workFactor"]!);
+            int workFactor = int.Parse(GetBCryptSection()["workFactor"]!);
 
-            password = ConcatPassword(password, secretKey);
+            password = ConcatPassword(password);
 
             return BCrypt.Net.BCrypt.HashPassword(password, workFactor);
         }
 
         public bool VerifyPassword(string password, string hashPassword)
         {
-            throw new NotImplementedException();
+            return BCrypt.Net.BCrypt.Verify(ConcatPassword(password), hashPassword);
         }
 
-        public string ConcatPassword(string password, string secretKey)
+        public string ConcatPassword(string password)
         {
+            string secretKey = GetBCryptSection()["secretKey"]!;
             return $"{password}{secretKey}";
+        }
+        private IConfiguration GetBCryptSection()
+        {
+            return _configuration.GetSection("BCrypt");
         }
     }
 }

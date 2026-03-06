@@ -10,7 +10,7 @@ namespace ECommerce.API.DTOs
         public string? Name { get; set; }
         [Required]
         [StringLength(100)]
-        [EmailAddress(ErrorMessage = "Invalid mail!")]
+        [EmailAddress(ErrorMessage = "Invalid email!")]
         public string? Email { get; set; }
         [Required]
         [StringLength(30)]
