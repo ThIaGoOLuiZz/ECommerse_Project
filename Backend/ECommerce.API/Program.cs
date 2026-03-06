@@ -1,5 +1,6 @@
 using ECommerce.API.Context;
 using ECommerce.API.DTOs.Mapping;
+using ECommerce.API.Repository;
 using ECommerce.API.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,6 +23,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 //Injeção de dependencia
 builder.Services.AddScoped<IPasswordService, PasswordService>();
 builder.Services.AddScoped<IUserDTOMappingProfile, UserDTOMappingProfile>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 
 var app = builder.Build();

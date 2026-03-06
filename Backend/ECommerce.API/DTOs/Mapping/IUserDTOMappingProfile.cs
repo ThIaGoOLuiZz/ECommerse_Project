@@ -4,6 +4,7 @@ namespace ECommerce.API.DTOs.Mapping
 {
     public interface IUserDTOMappingProfile
     {
-        public User ToUser(UserRequestDTO userRequestDTO);
+        public User UserRequestDTOToUser(UserRequestDTO userRequestDTO);
+        public UserResponseDTO UserToUserResponse(User user);
     }
 }

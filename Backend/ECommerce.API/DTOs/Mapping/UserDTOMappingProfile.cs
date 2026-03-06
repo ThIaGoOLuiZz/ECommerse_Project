@@ -8,7 +8,7 @@ namespace ECommerce.API.DTOs.Mapping
     {
         public UserDTOMappingProfile(){ }
 
-        public User ToUser(UserRequestDTO userRequestDTO)
+        public User UserRequestDTOToUser(UserRequestDTO userRequestDTO)
         {
             return new User
             {
@@ -17,6 +17,19 @@ namespace ECommerce.API.DTOs.Mapping
                 Phone = userRequestDTO.Phone,
                 UserType = userRequestDTO.UserType,
                 HashedPassword = null
+            };
+        }
+
+        public UserResponseDTO UserToUserResponse(User user)
+        {
+            return new UserResponseDTO
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Mail = user.Mail,
+                Phone = user.Phone,
+                UserType = user.UserType,
+                CreatedAt = user.CreatedAt.AddHours(-3)
             };
         }
     }

@@ -7,6 +7,6 @@ namespace ECommerce.API.Context
     {
         public AppDbContext(DbContextOptions options) : base(options){ }
 
-        DbSet<User> Users { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using ECommerce.API.Context;
 using ECommerce.API.DTOs;
 using ECommerce.API.DTOs.Mapping;
 using ECommerce.API.Models;
+using ECommerce.API.Repository;
 using ECommerce.API.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,27 +17,61 @@ namespace ECommerce.API.Controllers
         private IPasswordService _passwordService;
         private AppDbContext _appDbContext;
         private IUserDTOMappingProfile _mapping;
-        public UserController(IPasswordService passwordService, AppDbContext appDbContext, IUserDTOMappingProfile mapping)
+        private IUserRepository _userRepository;
+
+        public UserController
+        (
+            IPasswordService passwordService,
+            AppDbContext appDbContext,
+            IUserDTOMappingProfile mapping,
+            IUserRepository userRepository
+        )
         {
             _passwordService = passwordService;
             _appDbContext = appDbContext;
             _mapping = mapping;
+            _userRepository = userRepository;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> GetAllUsers()
+        {
+            var users = await _userRepository.GetAllUsers();
+            if (users == null) 
+                return NotFound(new { StatusCode = 404, Error = "No users found!" });
+            var usersResponse = users.Select(x => _mapping.UserToUserResponse(x));
+
+            return Ok(new { StatusCode = 200, Users = usersResponse });
+        }
+
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult> GetUser(int id)
+        {
+            var user = await _userRepository.GetUserById(id);
+            if (user is null) 
+                return NotFound(new { StatusCode = 404, Error = "User not found!" });
+            var userResponse = _mapping.UserToUserResponse(user);
+
+            return Ok(new { StatusCode = 200, User = userResponse });
         }
 
         [HttpPost]
-        public ActionResult Teste([FromBody] UserRequestDTO userRequestDTO) {
-            if (userRequestDTO is null)
-            {
-                return BadRequest();
-            }
-
-            User user = _mapping.ToUser(userRequestDTO);
+        public async Task<ActionResult> PostUser([FromBody] UserRequestDTO userRequestDTO) {
+            var user = _mapping.UserRequestDTOToUser(userRequestDTO);
             user.HashedPassword = _passwordService.HashGeneration(userRequestDTO.Password!);
+            var userCreated = _mapping.UserToUserResponse(await _userRepository.CreateUserAsync(user));
 
-            _appDbContext.Add(user);
-            _appDbContext.SaveChanges();
+            return Ok(new { StatusCode = 200, Id = userCreated.Id });
+        }
 
-            return Ok(user);
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteUser(int id)
+        {
+            if (await _userRepository.GetUserById(id) is null) 
+                return NotFound(new { StatusCode = 404, Error = "User not found!" });
+            await _userRepository.DeleteUserAsync(id);
+
+            return Ok(new { StatusCode = 200, DeletedId = id });
         }
     }
 }
