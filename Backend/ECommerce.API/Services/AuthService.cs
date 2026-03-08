@@ -12,11 +12,12 @@ namespace ECommerce.API.Services
         {
             _configuration = configuration;
         }
-        public string GenerateToken(string username)
+        public string GenerateToken(string username, string userRole)
         {
             var claims = new[]
             {
                 new Claim(ClaimTypes.Name, username),
+                new Claim(ClaimTypes.Role, userRole),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             };
 
@@ -25,8 +26,9 @@ namespace ECommerce.API.Services
 
             var token = new JwtSecurityToken(
                 issuer: _configuration["JWT:validIssuer"],
-                audience: _configuration["JWT:ValidAudience"],
-                expires: DateTime.Now.AddMinutes(tokenExpirationMinutes),
+                audience: _configuration["JWT:validAudience"],
+                expires: DateTime.UtcNow.AddMinutes(tokenExpirationMinutes),
+                claims: claims,
                 signingCredentials: new SigningCredentials(authKey, SecurityAlgorithms.HmacSha256)
                 );
 

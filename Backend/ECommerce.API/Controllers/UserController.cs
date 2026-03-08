@@ -31,7 +31,7 @@ namespace ECommerce.API.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> GetAllUsers()
         {
             var users = await _userRepository.GetAllUsers();
@@ -43,6 +43,7 @@ namespace ECommerce.API.Controllers
         }
 
         [HttpGet("{id:int}")]
+        [Authorize(Roles = "User")]
         public async Task<ActionResult> GetUser(int id)
         {
             var user = await _userRepository.GetUserById(id);

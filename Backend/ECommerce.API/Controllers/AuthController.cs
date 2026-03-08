@@ -33,7 +33,7 @@ namespace ECommerce.API.Controllers
                 return Unauthorized(new { StatusCode = 401, Error = "Invalid credentials" });
             }
 
-            var JwtToken = _authService.GenerateToken(user!.Name!);
+            var JwtToken = _authService.GenerateToken(user!.Name!, user.UserType.ToString());
 
             return Ok(new { StatusCode = 200, Id = user!.Id, Jwt = JwtToken });
         }

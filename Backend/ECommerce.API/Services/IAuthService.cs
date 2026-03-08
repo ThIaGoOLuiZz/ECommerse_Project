@@ -2,6 +2,6 @@
 {
     public interface IAuthService
     {
-        public string GenerateToken(string username);
+        public string GenerateToken(string username, string userRole);
     }
 }

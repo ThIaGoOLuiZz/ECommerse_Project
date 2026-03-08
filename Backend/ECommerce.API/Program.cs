@@ -72,7 +72,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ClockSkew = TimeSpan.Zero,
 
             ValidIssuer = builder.Configuration["JWT:validIssuer"],
-            ValidAudience = builder.Configuration["JWT:ValidAudience"],
+            ValidAudience = builder.Configuration["JWT:validAudience"],
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:SecretKey"]!))
         };
     });
