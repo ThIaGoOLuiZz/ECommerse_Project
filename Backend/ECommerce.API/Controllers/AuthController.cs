@@ -1,6 +1,7 @@
 ﻿using ECommerce.API.DTOs;
 using ECommerce.API.Repository;
 using ECommerce.API.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,11 +13,13 @@ namespace ECommerce.API.Controllers
     {
         private IUserRepository _userRepository;
         private IPasswordService _passwordService;
+        private IAuthService _authService;
 
-        public AuthController(IUserRepository userRepository, IPasswordService passwordService)
+        public AuthController(IUserRepository userRepository, IPasswordService passwordService, IAuthService authService)
         {
             _userRepository = userRepository;
             _passwordService = passwordService;
+            _authService = authService;
         }
 
         [HttpPost("Authenticate")]
@@ -30,7 +33,9 @@ namespace ECommerce.API.Controllers
                 return Unauthorized(new { StatusCode = 401, Error = "Invalid credentials" });
             }
 
-            return Ok(new { StatusCode = 200, Id = user!.Id});
+            var JwtToken = _authService.GenerateToken(user!.Name!);
+
+            return Ok(new { StatusCode = 200, Id = user!.Id, Jwt = JwtToken });
         }
     }
 }

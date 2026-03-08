@@ -5,6 +5,7 @@ using ECommerce.API.DTOs.Mapping;
 using ECommerce.API.Models;
 using ECommerce.API.Repository;
 using ECommerce.API.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,6 +31,7 @@ namespace ECommerce.API.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult> GetAllUsers()
         {
             var users = await _userRepository.GetAllUsers();
