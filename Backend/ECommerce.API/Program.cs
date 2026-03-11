@@ -1,5 +1,6 @@
 using ECommerce.API.Context;
 using ECommerce.API.DTOs.Mapping;
+using ECommerce.API.Repositories;
 using ECommerce.API.Repository;
 using ECommerce.API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -56,6 +57,7 @@ builder.Services.AddScoped<IPasswordService, PasswordService>();
 builder.Services.AddScoped<IUserDTOMappingProfile, UserDTOMappingProfile>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 
 //Configuração do JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

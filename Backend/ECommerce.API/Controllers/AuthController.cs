@@ -1,4 +1,5 @@
 ﻿using ECommerce.API.DTOs;
+using ECommerce.API.Models;
 using ECommerce.API.Repository;
 using ECommerce.API.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -33,9 +34,13 @@ namespace ECommerce.API.Controllers
                 return Unauthorized(new { StatusCode = 401, Error = "Invalid credentials" });
             }
 
-            var JwtToken = _authService.GenerateToken(user!.Name!, user.UserType.ToString());
+            var tokenModel = new TokenModel
+            {
+                AccessToken = _authService.GenerateToken(user!.Name!, user.UserType.ToString()),
+                RefreshToken = await _authService.GenerateRefreshToken(user.Id)
+            };
 
-            return Ok(new { StatusCode = 200, Id = user!.Id, Jwt = JwtToken });
+            return Ok(new { StatusCode = 200, Id = user!.Id, accessToken = tokenModel.AccessToken, refreshToken = tokenModel.RefreshToken });
         }
     }
 }

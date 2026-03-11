@@ -8,5 +8,6 @@ namespace ECommerce.API.Context
         public AppDbContext(DbContextOptions options) : base(options){ }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
     }
 }
