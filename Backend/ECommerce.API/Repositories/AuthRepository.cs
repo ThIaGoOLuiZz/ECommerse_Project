@@ -25,9 +25,7 @@ namespace ECommerce.API.Repositories
 
         public async Task SaveRefreshToken(RefreshToken refreshToken)
         {
-            await DeleteRefreshToken(refreshToken);
-
-            _dbContext.RefreshTokens.Add(refreshToken);
+            _dbContext.RefreshTokens.Add(refreshToken); 
 
             await _dbContext.SaveChangesAsync();
         }
@@ -42,11 +40,13 @@ namespace ECommerce.API.Repositories
                 .AnyAsync();
         }
 
-        public async Task DeleteRefreshToken(RefreshToken refreshToken)
+        public async Task DeleteRefreshToken(int userId)
         {
             await _dbContext.RefreshTokens
-                .Where(x => x.UserId == refreshToken.UserId)
+                .Where(x => x.UserId == userId)
                 .ForEachAsync(x => _dbContext.Remove(x));
+
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

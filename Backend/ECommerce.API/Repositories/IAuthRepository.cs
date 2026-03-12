@@ -7,6 +7,6 @@ namespace ECommerce.API.Repositories
         public Task SaveRefreshToken(RefreshToken refreshToken);
         public Task<bool> ValidateRefreshToken(string refreshToken, int userId);
         public Task<int?> GetUserIdByRefreshToken(string refreshToken);
-        public Task DeleteRefreshToken(RefreshToken refreshToken);
+        public Task DeleteRefreshToken(int userId);
     }
 }

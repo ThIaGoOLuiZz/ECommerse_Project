@@ -37,6 +37,8 @@ namespace ECommerce.API.Controllers
                 return Unauthorized(new { StatusCode = 401, Error = "Invalid credentials" });
             }
 
+            await _authRepository.DeleteRefreshToken(user!.Id);
+
             var tokenModel = new TokenModel
             {
                 AccessToken = _authService.GenerateToken(user!.Name!, user.UserType.ToString()),
@@ -51,14 +53,16 @@ namespace ECommerce.API.Controllers
         {
             int? userId = await _authRepository.GetUserIdByRefreshToken(refreshTokenRequestDTO.RefreshToken!);
             if (userId is null)
-                return Unauthorized();
+                return Unauthorized(new { StatusCode = 401, Message = "Invalid Refresh Token!"});
 
             var user = await _userRepository.GetUserById(userId.Value);
             if (user is null)
-                return Unauthorized();
+                return Unauthorized(new { StatusCode = 401, Message = "Invalid Refresh Token!" });
 
             if (!await _authRepository.ValidateRefreshToken(refreshTokenRequestDTO.RefreshToken, user.Id))
-                return Unauthorized();
+                return Unauthorized(new { StatusCode = 401, Message = "Invalid Refresh Token!" });
+            
+            await _authRepository.DeleteRefreshToken(user.Id);
 
             var tokenModel = new TokenModel
             {
