@@ -1,0 +1,24 @@
+.login-row{
+    min-height: 80vh;
+}
+
+.login-page{
+    background: rgb(247, 244, 244);
+}
+
+:host::ng-deep p-card .p-card-body, 
+:host::ng-deep p-card .p-card-content{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+:host::ng-deep p-card.without-color {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+:host::ng-deep p-inputicon {
+    width: 10px;
+}
