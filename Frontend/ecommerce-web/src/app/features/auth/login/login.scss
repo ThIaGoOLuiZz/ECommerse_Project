@@ -1,24 +1,46 @@
-.login-row{
-    min-height: 80vh;
+.login__container{
+    height: 70vh !important;
 }
 
-.login-page{
-    background: rgb(247, 244, 244);
+section:first-child{
+    background: #559986;
 }
 
-:host::ng-deep p-card .p-card-body, 
-:host::ng-deep p-card .p-card-content{
-    height: 100%;
-    display: flex;
-    justify-content: center;
+:host::ng-deep p-floatlabel input {
+    width: 100%;
 }
 
-:host::ng-deep p-card.without-color {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
+:host::ng-deep p-button button {
+    width: 70%;
+    background: #559986 !important;
+    border: 1px solid #559986 !important;
 }
 
-:host::ng-deep p-inputicon {
-    width: 10px;
+:host::ng-deep p-button button:hover {
+    background: #3d7a6b !important;
+    border-color: #3d7a6b !important;
+}
+
+:host::ng-deep p-button button span {
+    color: #fff;
+    font-weight: bold;
+}
+
+.login__forgot-password{
+    color: #bdbaba;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.login__forgot-password:hover{
+    color: #559986;
+}
+
+
+:host::ng-deep p-password input,
+input
+{
+    background: white;
+    border-color: #dadada;
+    color: #dadada;
 }
