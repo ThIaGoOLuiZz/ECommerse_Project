@@ -1,9 +1,9 @@
-.login__container{
-    height: 70vh !important;
-}
+@use 'sass:color';
+
+$primary-color: #281286;
 
 section:first-child{
-    background: #559986;
+    background: $primary-color;
 }
 
 :host::ng-deep p-floatlabel input {
@@ -12,13 +12,13 @@ section:first-child{
 
 :host::ng-deep p-button button {
     width: 70%;
-    background: #559986 !important;
-    border: 1px solid #559986 !important;
+    background: $primary-color !important;
+    border: 1px solid $primary-color !important;
 }
 
 :host::ng-deep p-button button:hover {
-    background: #3d7a6b !important;
-    border-color: #3d7a6b !important;
+    background: color.scale($primary-color, $lightness: -20%) !important;
+    border-color: color.scale($primary-color, $lightness: -20%) !important;
 }
 
 :host::ng-deep p-button button span {
@@ -32,8 +32,9 @@ section:first-child{
     text-decoration: none;
 }
 
-.login__forgot-password:hover{
-    color: #559986;
+.login__forgot-password:hover
+{
+    color: $primary-color;
 }
 
 
@@ -42,5 +43,66 @@ input
 {
     background: white;
     border-color: #dadada;
-    color: #dadada;
+    color: #88908e;
+    border-radius: 50px;
+}
+
+:host::ng-deep .p-inputtext:enabled:focus,
+:host::ng-deep .p-password-input:enabled:focus,
+:host::ng-deep p-password input:enabled:focus {
+    border-color: $primary-color !important;
+    outline: none !important;
+}
+
+:host::ng-deep p-floatlabel:has(input:focus) label,
+:host::ng-deep p-floatlabel:has(.p-password input:focus) label {
+    color: $primary-color !important;
+}
+
+
+:host::ng-deep p-button.register-button button {
+    width: 50%;
+    background: #ffffff !important;
+    border: 1px solid #ffffff !important;
+    color: #1a1e1d !important;
+}
+
+:host::ng-deep p-button.register-button button:hover {
+    background: color.scale(#ffffff, $lightness: -20%) !important;
+    border-color: color.scale(#ffffff, $lightness: -20%) !important;
+}
+
+:host::ng-deep p-button.register-button button span{
+    color: #1a1e1d;
+}
+
+.login__title{
+    font-size: 3rem;
+}
+
+.login__subtitle{
+    font-size: 1.5rem;
+    color: #bdbaba;
+}
+
+.input__login{
+    width: 35%;
+}
+
+:host::ng-deep p-floatlabel input,
+:host::ng-deep p-password input {
+padding-left: 1.7rem !important;
+}
+
+label{
+    padding-left: 1rem !important;
+}
+
+:host::ng-deep p-button{
+    height: 3rem;
+}
+
+:host::ng-deep p-button:active{
+    transition: transform 0.1s ease;
+    transform: scale(0.99);
 }

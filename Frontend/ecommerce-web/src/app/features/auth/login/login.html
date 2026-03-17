@@ -1,16 +1,23 @@
-<div class="min-vh-100 d-flex align-items-center justify-content-center">
-    <div class="row w-75 login__container shadow">
-        <section class="col-md-6 h-100">
-        </section>
-        <section class="col-md-6 h-100 d-flex flex-column align-items-center justify-content-center">
-            <div class="h-0 w-75 d-flex flex-row justify-content-between m">
-                <h1 class="text-center fw-bold">Login</h1>
-                <div class="d-flex flex-row align-items-center">
-                    <i class="pi pi-linkedin opacity-50 me-2"></i>
-                    <i class="pi pi-envelope opacity-50"></i>
-                </div>
+<main class="row g-0 min-vh-100">
+    <section class="min-vh-100 col-md-4 d-flex align-items-center justify-content-center">
+            <div class="h-100 w-75 d-flex flex-column align-items-center justify-content-center">
+                <h1 class="text-center fw-bold text-white login__title">Bem vindo!</h1>
+                <p class="text-center text-white login__subtitle">
+                    Cadastre-se e descubra uma infinidade de novas oportunidades!
+                </p>
+                <p-button label="Criar conta" [rounded]="true" class="w-100 d-flex justify-content-center mt-4 register-button"/>
             </div>
-            <div class="py-4 w-75 d-flex flex-column align-items-center justify-content-end">
+
+        </section>
+        <section class="min-vh-100 col-md-8 d-flex flex-column align-items-center justify-content-center">
+            <div class="h-0 w-75 d-flex flex-row justify-content-center">
+                <h1 class="text-center fw-bold login__title">Faça o Login da sua conta!</h1>
+            </div>
+            <div class="d-flex flex-row align-items-center">
+                <i class="pi pi-linkedin opacity-50 me-2"></i>
+                <i class="pi pi-envelope opacity-50"></i>   
+            </div>
+            <div class="py-4 d-flex flex-column align-items-center justify-content-end input__login">
                 <p-floatlabel variant="in" class="w-100">
                     <input 
                         pInputText 
@@ -30,12 +37,11 @@
                     <label for="password">Password</label>
                 </p-floatlabel>
                 <div class="w-100 mt-1 d-flex justify-content-end">
-                    <a href="http://" target="_blank" class="login__forgot-password">
+                    <a href="http://" target="_blank" class="login__forgot-password ">
                         Forgot your password?
                     </a>
                 </div>
-                <p-button label="Login" [rounded]="true" class="w-100 d-flex justify-content-center mt-4"/>
+                <p-button label="Login" (onClick)="onLogin()" [rounded]="true" class="w-75 d-flex justify-content-center mt-4"/>
             </div>
         </section>
-    </div>
-</div>
+</main>
