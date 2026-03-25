@@ -14,7 +14,7 @@ namespace ECommerce.API.DTOs
         public string? Email { get; set; }
         [Required]
         [StringLength(30)]
-        [RegularExpression("^[1-9]{2}9[1-9][0-9]{7}$", ErrorMessage = "Invalid phone number!")]
+        [RegularExpression("^[1-9]{2}[1-9]{2}[0-9]{7}$", ErrorMessage = "Invalid phone number!")]
         public string? Phone { get; set; }
         [Required]
         public UserTypeEnum UserType { get; set; }
