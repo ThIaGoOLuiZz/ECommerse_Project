@@ -5,6 +5,6 @@ export const API_ROUTES = {
         LOGIN: `${base_url}/Auth/authenticate`
     },
     USER: {
-        POST_USER: `${base_url}/User`
+        CREATE: `${base_url}/User`
     }
 }

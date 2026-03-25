@@ -18,6 +18,11 @@ export class Auth {
       }));
   }
 
+  register(name: string, email: string, phone: string, password: string, userType: number){
+    return this.http.post<any>(API_ROUTES.USER.CREATE, 
+      { name, email, phone, password, userType });
+  }
+
   getAccessToken(): string | null {
     return localStorage.getItem('token');
   }

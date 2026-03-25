@@ -6,6 +6,10 @@ section:first-child{
     background: $primary-color;
 }
 
+.login-text{
+    color: $primary-color;
+}
+
 :host::ng-deep p-floatlabel input {
     width: 100%;
 }

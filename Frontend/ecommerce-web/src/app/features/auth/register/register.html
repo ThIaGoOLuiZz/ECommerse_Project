@@ -1,1 +1,68 @@
-<p>register works!</p>
+<main class="row g-0 min-vh-100">
+    <section class="min-vh-100 col-md-4 d-flex align-items-center justify-content-center">
+            <div class="h-100 w-75 d-flex flex-column align-items-center justify-content-center">
+                <h1 class="text-center fw-bold text-white login__title">Bem vindo de volta!</h1>
+                <p class="text-center text-white login__subtitle">
+                    Já possui uma conta? Faça login para continuar!
+                </p>
+                <p-button label="Login" routerLink="/login" [rounded]="true" class="w-100 d-flex justify-content-center mt-4 register-button"/>
+            </div>
+
+        </section>
+        <section class="min-vh-100 col-md-8 d-flex flex-column align-items-center justify-content-center">
+            <div class="h-0 w-75 d-flex flex-row justify-content-center">
+                <h1 class="text-center fw-bold login__title">
+                    Faça o 
+                    <span class="text-center fw-bold login__title register-text">Registro</span> 
+                    da sua conta!
+                </h1>
+            </div>
+            <div class="d-flex flex-row align-items-center">
+                <i class="pi pi-linkedin opacity-50 me-2"></i>
+                <i class="pi pi-envelope opacity-50"></i>   
+            </div>
+            <div class="py-4 d-flex flex-column align-items-center justify-content-end input__login">
+                <p-floatlabel variant="in" class="w-100">
+                    <input 
+                        pInputText 
+                        id="name" 
+                        [(ngModel)]="name" 
+                        autocomplete="off"
+                        class="w-100"/>
+                    <label for="name">Name</label>
+                </p-floatlabel>
+                <p-floatlabel variant="in" class="w-100 mt-3">
+                    <input 
+                        pInputText 
+                        id="email" 
+                        [(ngModel)]="email" 
+                        autocomplete="off" 
+                        class="w-100"/>
+                    <label for="email">E-mail</label>
+                </p-floatlabel>
+                <p-floatlabel variant="in" class="w-100 mt-3">
+                    <input pInputText id="phone" [(ngModel)]="phone" pInputMask="(99) 99999-9999" />
+                    <label for="phone">Phone</label>
+                </p-floatlabel>
+                <p-floatlabel variant="in" class="w-100 mt-3">
+                    <p-password 
+                        [(ngModel)]="password" 
+                        [feedback]="false" 
+                        inputId="password" 
+                        autocomplete="off" 
+                        class="w-100"/>
+                    <label for="password">Password</label>
+                </p-floatlabel>
+                <p-floatlabel variant="in" class="w-100 mt-3">
+                    <p-password 
+                        [(ngModel)]="confirmPassword" 
+                        [feedback]="false" 
+                        inputId="confirmPassword" 
+                        autocomplete="off" 
+                        class="w-100"/>
+                    <label for="confirmPassword">Confirm Password</label>
+                </p-floatlabel>
+                <p-button label="Register" (onClick)="onRegister()" [rounded]="true" class="w-75 d-flex justify-content-center mt-4"/>
+            </div>
+        </section>
+</main>

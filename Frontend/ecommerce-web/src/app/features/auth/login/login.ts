@@ -26,17 +26,17 @@ import { Router } from '@angular/router';
     InputIconModule,
     DividerModule,
     PasswordModule,
-    ButtonModule
+    ButtonModule,
+    RouterLink
 ],
   templateUrl: './login.html',
-  styleUrl: './login.scss'
+  styleUrls: ['./login.scss']
 })
 export class Login {
   email: string | undefined;
   password: string | undefined;
 
   private router = inject(Router);
-
   private messageService = inject(MessageService);
 
   constructor(private auth: Auth) {
