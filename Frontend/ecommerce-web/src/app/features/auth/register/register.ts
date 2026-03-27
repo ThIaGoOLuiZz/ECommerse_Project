@@ -14,6 +14,9 @@ import { Auth } from '../../../core/services/auth';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 import { InputMaskModule } from 'primeng/inputmask';
+import { MessageModule } from 'primeng/message';
+import { CommonModule } from '@angular/common';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @Component({
   selector: 'app-register',
@@ -29,7 +32,10 @@ import { InputMaskModule } from 'primeng/inputmask';
     PasswordModule,
     ButtonModule,
     RouterLink,
-    InputMaskModule
+    InputMaskModule,
+    MessageModule,
+    CommonModule,
+    ProgressSpinnerModule
   ],
   templateUrl: './register.html',
   styleUrls: ['./register.scss'],
@@ -42,6 +48,12 @@ export class Register {
   password: string | undefined;
   confirmPassword: string | undefined;
   isSubmited: boolean = false;
+  nameTouched: boolean = false;
+  emailTouched: boolean = false
+  phoneTouched: boolean = false;
+  passwordTouched: boolean = false;
+  confirmPasswordTouched: boolean = false;
+  isLoading = false;
 
   private router = inject(Router);
   private messageService = inject(MessageService);
@@ -51,6 +63,8 @@ export class Register {
 
   onRegister() {
     this.isSubmited = true;
+    this.isLoading = true;
+
     this.phone = this.phone?.replace(/\D/g, '');
     console.log(this.phone);
     if (this.email && this.password && this.name && this.phone && this.userType && this.confirmPassword) {
@@ -60,6 +74,7 @@ export class Register {
           summary: 'As senhas não coincidem!',
           life: 2000
         });
+        this.isLoading = false;
         return;
       }
       this.auth.register(this.name, this.email, this.phone, this.password, this.userType).subscribe({
@@ -69,6 +84,7 @@ export class Register {
             summary: 'Registro realizado com sucesso!',
             life: 2000
           });
+          this.isLoading = false;
           this.router.navigate(['/']);
         },
         error: (error) => {
@@ -78,27 +94,39 @@ export class Register {
             summary: error.error.error || 'Falha ao realizar registro!',
             life: 2000
           });
+          this.isLoading = false;
         }
       });
     }
   }
   
   inputEmailValidation(): boolean{
-    return (!this.email || this.email.trim() === '') && this.isSubmited;
+    return (!this.email || this.email.trim() === '') && (this.isSubmited || this.emailTouched);
   }
   inputPasswordValidation(): boolean{
-    return (!this.password || this.password.trim() === '') && this.isSubmited;
+    return (!this.password || this.password.trim() === '') && (this.isSubmited || this.passwordTouched);
   }
 
   inputNameValidation(): boolean{
-    return (!this.name || this.name.trim() === '') && this.isSubmited;
+    return (!this.name || this.name.trim() === '') && (this.isSubmited || this.nameTouched);
   }
 
   inputPhoneValidation(): boolean{
-    return (!this.phone || this.phone.trim() === '') && this.isSubmited;
+    return (!this.phone || this.phone.trim() === '') && (this.isSubmited || this.phoneTouched);
   }
 
   inputConfirmPasswordValidation(): boolean{
-    return (!this.confirmPassword || this.confirmPassword.trim() === '') && this.isSubmited;
+    return (!this.confirmPassword || this.confirmPassword.trim() === '') && (this.isSubmited || this.confirmPasswordTouched);
+  }
+
+  applyPhoneMask(event: any) {
+    let value = event.target.value.replace(/\D/g, "");
+
+    if (value.length > 2 && value.length <= 11) {
+      value = value.replace(/^(\d{2})(\d)/g, "($1) $2");
+      value = value.replace(/(\d{5})(\d)/, "$1-$2");
+    }
+    this.phone = value;
+    event.target.value = value;
   }
 }

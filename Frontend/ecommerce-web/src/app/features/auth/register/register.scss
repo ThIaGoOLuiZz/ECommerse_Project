@@ -63,7 +63,6 @@ input
     color: $primary-color !important;
 }
 
-
 :host::ng-deep p-button.register-button button {
     width: 50%;
     background: #ffffff !important;
@@ -106,7 +105,16 @@ label{
     height: 3rem;
 }
 
-:host::ng-deep p-button:active{
+:host::ng-deep p-button:active button:not(:disabled) {
     transition: transform 0.1s ease;
     transform: scale(0.99);
+}
+
+:host::ng-deep p-button button:disabled:hover {
+    cursor: not-allowed;
+}
+
+
+.text-error{
+    margin-left: 15%;
 }

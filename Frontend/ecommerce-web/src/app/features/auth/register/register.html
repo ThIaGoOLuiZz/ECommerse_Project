@@ -28,41 +28,93 @@
                         id="name" 
                         [(ngModel)]="name" 
                         autocomplete="off"
-                        class="w-100"/>
+                        class="w-100"
+                        [invalid]="inputNameValidation()"
+                        (blur)="nameTouched = true"/>
                     <label for="name">Name</label>
                 </p-floatlabel>
+                <div class="w-100 d-flex justify-content-start text-error">
+                    <p-message *ngIf="inputNameValidation()" severity="error" size="small" variant="simple">Nome é obrigatório.</p-message>
+                </div>
                 <p-floatlabel variant="in" class="w-100 mt-3">
                     <input 
                         pInputText 
                         id="email" 
                         [(ngModel)]="email" 
                         autocomplete="off" 
-                        class="w-100"/>
+                        class="w-100"
+                        [invalid]="inputEmailValidation()"
+                        (blur)="emailTouched = true"/>
                     <label for="email">E-mail</label>
                 </p-floatlabel>
+                <div class="w-100 d-flex justify-content-start text-error">
+                    <p-message *ngIf="inputEmailValidation()" severity="error" size="small" variant="simple">E-mail é obrigatório.</p-message>
+                </div>
+
                 <p-floatlabel variant="in" class="w-100 mt-3">
-                    <input pInputText id="phone" [(ngModel)]="phone" pInputMask="(99) 99999-9999" />
+                    <input 
+                        pInputText 
+                        id="phone" 
+                        type="text"
+                        [(ngModel)]="phone" 
+                        (input)="applyPhoneMask($event)"
+                        maxlength="15"
+                        class="w-100"
+                        [invalid]="inputPhoneValidation()"
+                        (blur)="phoneTouched = true"/>
                     <label for="phone">Phone</label>
                 </p-floatlabel>
+                <div class="w-100 d-flex justify-content-start text-error">
+                    <p-message *ngIf="inputPhoneValidation()" severity="error" size="small" variant="simple">Telefone é obrigatório.</p-message>
+                </div>
+
                 <p-floatlabel variant="in" class="w-100 mt-3">
                     <p-password 
                         [(ngModel)]="password" 
                         [feedback]="false" 
                         inputId="password" 
                         autocomplete="off" 
-                        class="w-100"/>
+                        class="w-100"
+                        [invalid]="inputPasswordValidation()"
+                        (onBlur)="passwordTouched = true"/>
                     <label for="password">Password</label>
                 </p-floatlabel>
+                <div class="w-100 d-flex justify-content-start text-error">
+                    <p-message *ngIf="inputPasswordValidation()" severity="error" size="small" variant="simple">Senha é obrigatória.</p-message>
+                </div>
+
                 <p-floatlabel variant="in" class="w-100 mt-3">
                     <p-password 
                         [(ngModel)]="confirmPassword" 
                         [feedback]="false" 
                         inputId="confirmPassword" 
                         autocomplete="off" 
-                        class="w-100"/>
+                        class="w-100"
+                        [invalid]="inputConfirmPasswordValidation()"
+                        (onBlur)="confirmPasswordTouched = true"/>
                     <label for="confirmPassword">Confirm Password</label>
                 </p-floatlabel>
-                <p-button label="Register" (onClick)="onRegister()" [rounded]="true" class="w-75 d-flex justify-content-center mt-4"/>
+                <div class="w-100 d-flex justify-content-start text-error">
+                    <p-message *ngIf="inputConfirmPasswordValidation()" severity="error" size="small" variant="simple">Confirmação de senha é obrigatória.</p-message>
+                </div>
+
+                <p-button 
+                    [disabled]="!email || !password || !name || !phone || !confirmPassword || isLoading"
+                    label="Register" 
+                    (onClick)="onRegister()" 
+                    [rounded]="true" 
+                    class="w-75 d-flex justify-content-center mt-4"
+                    *ngIf="!isLoading"/>
+
+                <p-button
+                    [disabled]="true"
+                    [rounded]="true"
+                    class="w-75 d-flex justify-content-center mt-4"
+                    *ngIf="isLoading">
+                    <ng-template pTemplate="content">
+                        <p-progress-spinner styleClass="button-spinner" [style]="{width: '20px', height: '20px'}" strokeWidth="4" />
+                    </ng-template>
+                </p-button>
             </div>
         </section>
 </main>
