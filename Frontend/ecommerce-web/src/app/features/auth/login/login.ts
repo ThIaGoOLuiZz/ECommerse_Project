@@ -1,4 +1,4 @@
-import { Component, inject  } from '@angular/core';
+import { Component, inject, input  } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { FormsModule } from '@angular/forms';
 import { FloatLabelModule } from 'primeng/floatlabel';
@@ -13,6 +13,9 @@ import { RouterLink } from "@angular/router";
 import { Auth } from '../../../core/services/auth';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { MessageModule } from 'primeng/message';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +30,10 @@ import { Router } from '@angular/router';
     DividerModule,
     PasswordModule,
     ButtonModule,
-    RouterLink
+    RouterLink,
+    CommonModule,
+    MessageModule,
+    ProgressSpinnerModule
 ],
   templateUrl: './login.html',
   styleUrls: ['./login.scss']
@@ -35,17 +41,27 @@ import { Router } from '@angular/router';
 export class Login {
   email: string | undefined;
   password: string | undefined;
+  isSubmited: boolean = false;
+  emailTouched: boolean = false;
+  passwordTouched: boolean = false;
+  isLoading = false;
 
   private router = inject(Router);
   private messageService = inject(MessageService);
 
   constructor(private auth: Auth) {
+    this.email = '';
+    this.password = '';
   }
 
   onLogin() {
+    this.isSubmited = true;
+    this.isLoading = true;
+
     if (this.email && this.password) {
       this.auth.login(this.email, this.password).subscribe({
         next: () => {
+          this.isLoading = false;
           this.messageService.add({
             severity: 'success',
             summary: 'Login realizado com sucesso!',
@@ -55,6 +71,7 @@ export class Login {
         },
         error: (error) => {
           console.error('Login failed:', error);
+          this.isLoading = false;
           this.messageService.add({
             severity: 'error',
             summary: 'Falha ao realizar login!',
@@ -64,4 +81,11 @@ export class Login {
       });
     }
   }
+
+inputEmailValidation(): boolean {
+  return (!this.email || this.email.trim() === '') && (this.isSubmited || this.emailTouched);
+}
+inputPasswordValidation(): boolean {
+  return (!this.password || this.password.trim() === '') && (this.isSubmited || this.passwordTouched);
+}
 }

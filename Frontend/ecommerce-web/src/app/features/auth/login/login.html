@@ -27,24 +27,53 @@
                         id="email" 
                         [(ngModel)]="email" 
                         autocomplete="off" 
-                        class="w-100"/>
+                        class="w-100"
+                        [invalid]="inputEmailValidation()"
+                        (blur)="emailTouched=true"/>
                     <label for="email">E-mail</label>
                 </p-floatlabel>
+                <div class="w-100 d-flex justify-content-start text-error">
+                    <p-message *ngIf="inputEmailValidation()" severity="error" size="small" variant="simple">E-mail é obrigatório.</p-message>
+                </div>
+
                 <p-floatlabel variant="in" class="w-100 mt-3">
                     <p-password 
-                        [(ngModel)]="password" 
+                        [(ngModel)]="password"
                         [feedback]="false" 
                         inputId="password" 
                         autocomplete="off" 
-                        class="w-100"/>
-                    <label for="password">Password</label>
+                        class="w-100"
+                        [invalid]="inputPasswordValidation()"
+                        (onBlur)="passwordTouched=true"/>
+                    <label for="password">Senha</label>
                 </p-floatlabel>
+                <div class="w-100 d-flex justify-content-start text-error">
+                    <p-message *ngIf="inputPasswordValidation()" severity="error" size="small" variant="simple">Senha é obrigatória.</p-message>
+                </div>
+
                 <div class="w-100 mt-1 d-flex justify-content-end">
                     <a href="http://" target="_blank" class="login__forgot-password ">
-                        Forgot your password?
+                        Esqueceu sua senha?
                     </a>
                 </div>
-                <p-button label="Login" (onClick)="onLogin()" [rounded]="true" class="w-75 d-flex justify-content-center mt-4"/>
+                <p-button
+                    [disabled]="!email || !password || isLoading"
+                    (onClick)="onLogin()"
+                    [rounded]="true"
+                    class="w-75 d-flex justify-content-center mt-4"
+                    *ngIf="!isLoading"
+                    label="Login">
+                </p-button>
+
+                <p-button
+                    [disabled]="true"
+                    [rounded]="true"
+                    class="w-75 d-flex justify-content-center mt-4"
+                    *ngIf="isLoading">
+                    <ng-template pTemplate="content">
+                        <p-progress-spinner styleClass="button-spinner" [style]="{width: '20px', height: '20px'}" strokeWidth="4" />
+                    </ng-template>
+                </p-button>
             </div>
         </section>
 </main>
