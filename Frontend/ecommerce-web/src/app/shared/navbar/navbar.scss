@@ -1,0 +1,44 @@
+@use 'sass:color';
+
+$primary-color: #281286;
+
+.navbar__container,
+.content__container{
+	background-color: $primary-color;
+}
+
+:host::ng-deep p-menubar {
+  background-color: transparent;
+  border: none;
+}
+
+.navbar-brand {
+  color: #fff;
+  border-bottom: 1px solid transparent;
+}
+
+.navbar__home{
+  border-bottom: 1px solid #fff;
+}
+
+.navbar-brand:hover {
+  color: color.scale(#fff, $lightness: -20%) !important;
+}
+
+:host::ng-deep p-menu div{
+  background-color: #fff;
+  color: black;
+}
+
+:host::ng-deep p-menu div {
+  inset-inline-start: auto !important;
+
+  ul li span {
+    font-size: medium;
+  }
+}
+
+a,
+span{
+  font-size: medium;
+}
