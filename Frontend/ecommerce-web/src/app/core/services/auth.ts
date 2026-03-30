@@ -34,4 +34,10 @@ export class Auth {
   getUserId(): string | null {
     return localStorage.getItem('userId');
   }
+
+  logout(): void{
+    localStorage.removeItem('userId');
+    localStorage.removeItem('token');
+    localStorage.removeItem('refreshToken');
+  }
 }

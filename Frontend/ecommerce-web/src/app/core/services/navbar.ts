@@ -4,7 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class Navbar {
-  generateNavbarItems(label?: string, icon?: string): { label?: string; icon?: string } {
-    return {label: label, icon: icon };
+  generateNavbarItems(label?: string, icon?: string, routerLink?: string, command?: () => void): { label?: string; icon?: string; routerLink?: string, command?: () => void } {
+    return {label: label, icon: icon, routerLink: routerLink, command: command };
   }
+
+
 }

@@ -42,3 +42,38 @@ a,
 span{
   font-size: medium;
 }
+
+.modal__button{
+  width: 7rem;
+}
+
+:host::ng-deep p-button.modal__button button {
+  width: 100%;
+}
+
+:host::ng-deep p-dialog div div{
+  background-color: #fff;
+  color: black;
+}
+
+:host::ng-deep p-button.button_primary button {
+  background-color: color.scale($primary-color, $lightness: -20%);
+  color: #fff;
+  border: 1px solid $primary-color;
+}
+:host::ng-deep p-button.button_primary button:hover {
+  background: color.scale($primary-color, $lightness: -50%) !important;
+  color: #fff;
+  border: 1px solid color.scale($primary-color, $lightness: -50%);
+}
+
+:host::ng-deep p-button.button_secondary button {
+  background-color: #fff;
+  color: $primary-color;
+  border: 1px solid $primary-color;
+}
+:host::ng-deep p-button.button_secondary button:hover {
+  background: color.scale(#ffffff, $lightness: -5%) !important;
+  color: black
+}
+
