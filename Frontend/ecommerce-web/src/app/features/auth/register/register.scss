@@ -118,3 +118,12 @@ label{
 .text-error{
     margin-left: 15%;
 }
+
+p-button.button__home{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 3rem;
+    height: 3rem;
+    z-index: 1;
+}
